@@ -1,0 +1,161 @@
+import sqlite3, sys, math
+luku1 = ""
+luku2 = ""
+luku3 = ""
+db = sqlite3.connect("Laskut.txt")
+
+
+def yhteenlasku():
+    try:
+        luku1 = int(input("Anna ensimmäinen luku: "))
+        luku2 = int(input("Anna toinen luku: "))
+        summa = luku1 + luku2
+        db.execute("INSERT INTO yhteenlaskut (luku1,luku2,summa) VALUES (?,?,?)",[luku1, luku2, summa])
+        return summa
+    except ValueError:
+        print("Anna jokin luku")
+
+def vähennyslasku():
+    try:
+        luku1 = float(input("Anna ensimmäinen luku: "))
+        luku2 = float(input("Anna toinen luku: "))
+        erotus = luku1 - luku2
+        db.execute("INSERT INTO vähennyslaskut (luku1,luku2,erotus) VALUES (?,?,?)",[luku1, luku2, erotus])
+        return erotus
+    except ValueError:
+        print("Anna jokin luku")
+
+def kertolasku():
+    try:
+        luku1 = float(input("Anna ensimmäinen luku: "))
+        luku2 = float(input("Anna toinen luku: "))
+        tulo = luku1 * luku2
+    except ValueError:
+        print("Anna jokin luku")
+    db.execute("INSERT INTO vähennyslaskut (luku1,luku2,tulo) VALUES (?,?,?)",[luku1, luku2, tulo])
+    return tulo
+
+
+def jakolasku():
+    while True:
+        try:
+            try:
+                luku1 = float(input("Anna ensimmäinen luku: "))
+                luku2 = float(input("Anna toinen luku: "))
+                osamäärä = luku1 / luku2
+                db.execute("INSERT INTO jakolaskut (luku1,luku2,osamäärä) VALUES (?,?,?)",[luku1, luku2, osamäärä])
+                return osamäärä
+            except ZeroDivisionError:
+                print("Nollalla ei voi jakaa!")
+        except ValueError:
+            print("Anna jokin luku")
+
+
+
+def kertoma():
+    n = float(input("Luku, jonka kertoman haluat: "))
+    i = n-1
+    while i > 0:
+        n = n*i
+        i -= 1
+    db.execute("INSERT INTO kertomat (luku1,luku2,kertoma) VALUES (?,?,?)",[luku1, luku2, n])
+    return n
+
+def neliöjuuri():
+    luku = float(input("Anna luku: "))
+    vastaus = math.sqrt(luku)
+    db.execute("INSERT INTO neliöjuuret (luku1,luku2,neliöjuuri) VALUES (?,?,?)",[luku1, luku2, vastaus])
+    return vastaus
+
+
+
+
+
+#Funktio, jossa toteutetaan valinnan mukainen operaatio
+def if_valinta():
+    if valinta == 1:
+        print(yhteenlasku())
+    elif valinta == 2:
+        print(vähennyslasku())
+    elif valinta == 3:
+        print(jakolasku())
+    elif valinta == 4:
+        print(kertolasku())
+    elif valinta == 5:
+        print(kertoma())
+    elif valinta == 6:
+        print(neliöjuuri())
+    elif valinta == 7:
+        pass #tee tähän lohko, jossa tulostetaan tiedot tietokannasta
+    return ""
+
+print("Päivää! Mitä haluat tehdä? Valitse 1:yhteenlasku, 2:vähennyslasku, 3:jakolasku, 4:kertolasku, 5: kertomafunktiot, 6:tulosta tallennettuja tietoja, 7: poistu")
+
+
+
+while True:
+    valinta = float(input("Anna valinta: "))
+    if valinta == 1:
+        while True:
+            print(if_valinta())
+            poikki = input("Vaihdetaanko laskutyyppiä? Vastaa kyllä tai ei " ).lower()
+            if poikki == "kyllä":
+                break
+            else:
+                pass
+    
+    elif valinta == 2:
+        while True:
+            print(if_valinta())
+            poikki = input("Vaihdetaanko laskutyyppiä? Vastaa kyllä tai ei " ).lower()
+            if poikki == "kyllä":
+                break
+            else:
+                pass
+    
+    elif valinta == 3:
+        while True:
+            print(if_valinta())
+            poikki = input("Vaihdetaanko laskutyyppiä? Vastaa kyllä tai ei " ).lower()
+            if poikki == "kyllä":
+                break
+            else:
+                pass
+
+    elif valinta == 4:
+        while True:
+            print(if_valinta())
+            poikki = input("Vaihdetaanko laskutyyppiä? Vastaa kyllä tai ei " ).lower()
+            if poikki == "kyllä":
+                break
+            else:
+                pass
+
+    elif valinta == 5:
+        while True:
+            print(if_valinta())
+            poikki = input("Vaihdetaanko laskutyyppiä? Vastaa kyllä tai ei " ).lower()
+            if poikki == "kyllä":
+                break
+            else:
+                pass
+
+    elif valinta == 6:
+        while True:
+            print(if_valinta())
+            poikki = input("Vaihdetaanko laskutyyppiä? Vastaa kyllä tai ei " ).lower()
+            if poikki == "kyllä":
+                break
+            else:
+                pass
+
+    elif valinta == 7:
+        while True:
+            print(if_valinta())
+            poikki = input("Vaihdetaanko laskutyyppiä? Vastaa kyllä tai ei ").lower()
+            if poikki == "kyllä":
+                break
+            else:
+                pass
+    elif valinta == 8:
+        break
