@@ -8,5 +8,5 @@ sequenceDiagram
     activate server
     server-->>browser: 201 created
     deactivate server
-Note: the browser already have JavaScript code for dealing new data and sendig it to server.
+    Note: the browser already have JavaScript code for dealing new data and sendig it to server.
 ```
